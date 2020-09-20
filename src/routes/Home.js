@@ -1,3 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default () => <span>Home</span>;
+const Home = () => {
+  const [sweet, setSweet] = useState("");
+  const onSubmit = (event) => {
+    event.preventDefault();
+  };
+  const onChange = (event) => {
+    const { value } = event.target;
+    setSweet(value);
+    console.log(value);
+  };
+  return (
+    <div>
+      <form onSubmit={onSubmit}>
+        <input
+          value={sweet}
+          onChange={onChange}
+          type='text'
+          placeholder="What's on your mind"
+          maxLength={120}
+        />
+        <input type='submit' value='Sweet' />
+      </form>
+    </div>
+  );
+};
+export default Home;
